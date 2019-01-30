@@ -70,5 +70,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.warrenstrange/googleauth -->
+		<!-- totp 依赖 客户端 
+		参考 https://segmentfault.com/a/1190000012425110
+		https://github.com/wstrange/GoogleAuth
+		https://github.com/google/google-authenticator
+		-->
+		<dependency>
+			<groupId>com.warrenstrange</groupId>
+			<artifactId>googleauth</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.aerogear/aerogear-otp-java -->
+		<!-- totp  服务端 -->
+		<dependency>
+			<groupId>org.jboss.aerogear</groupId>
+			<artifactId>aerogear-otp-java</artifactId>
+			<version>1.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 	</dependencies>
 </project>
