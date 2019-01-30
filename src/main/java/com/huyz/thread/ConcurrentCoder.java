@@ -79,10 +79,18 @@ public class ConcurrentCoder {
 
 	}
 
+<<<<<<< HEAD
 	/*
 	 * 并发辅助类 篱栅 和countdownlatch 技术相反 该类是当计数的次数达到指定值 触发。并且计数器是可重复用
 	 * CyclicBarrier支持一个可选的Runnable命令，在一组线程中的最后一个线程到达之后（但在释放所有线程之前），
 	 * 该命令只在每个屏障点运行一次。若在继续所有参与线程之前更新共享状态，此屏障操作很有用
+=======
+	/**
+	 * @link https://blog.csdn.net/chenchaofuck1/article/details/51603600 并发辅助类 篱栅
+	 *       和countdownlatch 技术相反 该类是当计数的次数达到指定值 触发。并且计数器是可重复用
+	 *       CyclicBarrier支持一个可选的Runnable命令，在一组线程中的最后一个线程到达之后（但在释放所有线程之前），
+	 *       该命令只在每个屏障点运行一次。若在继续所有参与线程之前更新共享状态，此屏障操作很有用
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
 	 */
 	public static void concurrent_CycicBarrier() {
 		AtomicInteger val = new AtomicInteger(0);
@@ -152,6 +160,17 @@ public class ConcurrentCoder {
 	public static void phaser_Test() {
 		Phaser phaser = new Phaser(5) {
 			@Override
+<<<<<<< HEAD
+=======
+			/**
+			 * 
+			 * 参数phase是阶段数，每经过一个阶段该数加1，registeredParties是当前参与的线程数。
+			 * 此方法有2个作用：1、当每一个阶段执行完毕，此方法会被自动调用， 因此， 重载此方法写入的代码会在每个阶段执行完毕时执行，
+			 * 相当于CyclicBarrier的barrierAction。2、当此方法返回true时，
+			 * 意味着Phaser被终止，因此可以巧妙的设置此方法的返回值来终止所有线程。 例如：若此方法返回值为
+			 * phase>=3，其含义为当整个线程执行了4个阶段后，程序终止。
+			 */
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
 			protected boolean onAdvance(int phase, int registeredParties) {
 				System.out.println("阶段=》" + phase);
 				System.err.println("注册数=》" + registeredParties);

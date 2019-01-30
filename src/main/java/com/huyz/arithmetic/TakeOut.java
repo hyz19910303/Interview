@@ -1,6 +1,7 @@
 package com.huyz.arithmetic;
 
 /**
+<<<<<<< HEAD
  * Create at 2018年9月2日 下午12:52:40
  *
  * @autuor EVIL
@@ -8,6 +9,15 @@ package com.huyz.arithmetic;
  * @version 1.0
  *
  *          ProjectName Interview
+=======
+ * Create at 2018年8月31日 下午1:15:22
+ *
+ * @autuor huyz
+ *
+ * @version 1.0
+ *
+ *          ProjectName interview
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
  *
  *          Description:
  * 
@@ -49,5 +59,18 @@ public class TakeOut {
 			array[i] = i + 1;
 		}
 		return array;
+
 	}
+
+	public static void take(int capacity, int out) {
+		int[] array = initArray(capacity);
+		int length = array.length;
+		int num = 1;// 喊话人喊的数字
+		while (length > 0) {
+			if (array[num] == out) {
+
+			}
+		}
+	}
+
 }

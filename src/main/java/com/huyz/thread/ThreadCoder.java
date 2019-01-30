@@ -18,12 +18,20 @@ public class ThreadCoder {
 
 	public static void main(String[] args) throws Exception {
 //		threadYield();
+<<<<<<< HEAD
 //		threadJoin();
+=======
+		threadJoin();
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
 //		thread_multi_start();
 //		threadSleep();
 //		Thread_Circle_Print();
 //		ThreadAndProductAndConsumerWithAtomatic();
+<<<<<<< HEAD
 		ThreadAndProductAndConsumerWithWaitNotify();
+=======
+//		ThreadAndProductAndConsumerWithWaitNotify();
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
 	}
 
 	public static void thread_multi_start() {
