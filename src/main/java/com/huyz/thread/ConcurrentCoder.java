@@ -79,11 +79,17 @@ public class ConcurrentCoder {
 
 	}
 
+	/*
+	 * 并发辅助类 篱栅 和countdownlatch 技术相反 该类是当计数的次数达到指定值 触发。并且计数器是可重复用
+	 * CyclicBarrier支持一个可选的Runnable命令，在一组线程中的最后一个线程到达之后（但在释放所有线程之前），
+	 * 该命令只在每个屏障点运行一次。若在继续所有参与线程之前更新共享状态，此屏障操作很有用
+=======
 	/**
 	 * @link https://blog.csdn.net/chenchaofuck1/article/details/51603600 并发辅助类 篱栅
 	 *       和countdownlatch 技术相反 该类是当计数的次数达到指定值 触发。并且计数器是可重复用
 	 *       CyclicBarrier支持一个可选的Runnable命令，在一组线程中的最后一个线程到达之后（但在释放所有线程之前），
 	 *       该命令只在每个屏障点运行一次。若在继续所有参与线程之前更新共享状态，此屏障操作很有用
+>>>>>>> 1c9ea9d047c123139497e75ad3eefebb6213aba3
 	 */
 	public static void concurrent_CycicBarrier() {
 		AtomicInteger val = new AtomicInteger(0);

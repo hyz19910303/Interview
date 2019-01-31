@@ -1,6 +1,13 @@
 package com.huyz.thread;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.Exchanger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Exchanger;
@@ -21,9 +28,31 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class CountCapacity {
 
+	static ExecutorService threadpool = Executors.newCachedThreadPool();
+	
 	public static void main(String[] args) throws Exception {
 //		LocalDateTime begin = LocalDateTime.now();
 //		test();
+		LocalDateTime end = LocalDateTime.now();
+//		long between = ChronoUnit.SECONDS.between(begin, end);
+//		System.out.println("多线程耗时："+between);  //52s  => 59945773530
+														//  59946271201
+		// 2
+		String[] p = new String[] { "C:/", "D:/", "E:/" };
+		long val = 0;
+		for (String string : p) {
+			val = val + count(new File(string));
+		}
+		LocalDateTime endsed = LocalDateTime.now();
+		long between2 = ChronoUnit.SECONDS.between(end, endsed);
+		System.out.println("单线程耗时" + between2 + "=>" + val);// 63=>59946271201
+	}
+
+	public static void test() throws InterruptedException {
+		ExecutorService threadpool = Executors.newFixedThreadPool(4);
+		Exchanger<Long> exchange = new Exchanger<>();
+		AtomicLong longValue = new AtomicLong(0);
+		CyclicBarrier barrir = new CyclicBarrier(3, () -> {
 //		LocalDateTime end = LocalDateTime.now();
 //		long between = ChronoUnit.SECONDS.between(begin, end);
 //		System.out.println("多线程耗时：" + between); // 52s => 59945773530
@@ -39,7 +68,7 @@ public class CountCapacity {
 //		LocalDateTime endsed = LocalDateTime.now();
 //		long between2 = ChronoUnit.SECONDS.between(start, endsed);
 //		System.out.println("单线程耗时" + between2 + "=>" + val);// 63=>59946271201
-		parse_countCapaicty();
+		});
 	}
 
 	/*
@@ -74,39 +103,6 @@ public class CountCapacity {
 
 	}
 
-	public static void test() throws InterruptedException {
-		// ExecutorService threadpool = Executors.newFixedThreadPool(6);
-		Exchanger<Long> exchange = new Exchanger<>();
-		AtomicLong longValue = new AtomicLong(0);
-		CyclicBarrier barrir = new CyclicBarrier(2, () -> {
-			try {
-				Long exchange2 = exchange.exchange(longValue.get());
-				System.err.println(exchange2);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-//			threadpool.shutdown();
-		});
-		final String[] p = new String[] { // "C:/",
-				"D:/", "E:/" };
-		for (String pName : p) {
-			new Thread(() -> {
-				long useSpace = count(new File(pName));
-				try {
-//					System.out.println(useSpace);
-					longValue.addAndGet(useSpace);
-					barrir.await();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				} catch (BrokenBarrierException e) {
-					e.printStackTrace();
-				}
-			}).start();
-		}
-		Long exchange2 = exchange.exchange(0l);
-		System.out.println("总的占用大小" + exchange2);
-
-	}
 
 	/**
 	 * 
@@ -117,6 +113,7 @@ public class CountCapacity {
 	 * 描述: 统计磁盘使用的大小
 	 * </p>
 	 * <tt>huyz<tt>
+<<<<<<< HEAD
 	 * 
 	 * @param p 盘符
 	 * 
